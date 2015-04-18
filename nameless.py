@@ -1,18 +1,43 @@
-# Download the twilio-python library from http://twilio.com/docs/libraries
-from twilio.rest import TwilioRestClient
-
+# import necessary modules
 from flask import Flask, request, redirect
 import twilio.twiml
-__author__ = 'Phil'
-__author__ = 'Rachael'
 
+"""
+User sends a sms message via phone, and the same message
+is sent back via twilio client.
+
+date: 4/18/2015
+filename:
+authors: Philip Bedward and Rachael Thormann
+"""
+
+__author__ = 'Philip Bedward'
+__author__ = 'Rachael Thormann'
+
+# sets a variable for the constructor and module for this file
 app = Flask(__name__)
+
+# sets the URL rule endpoint to /sms
+# limits the URL to the methods GET and POST
 @app.route("/sms", methods=['GET', 'POST'])
+
 def send_sms():
+    """
+    Sends the same sms message back to a user that is
+    sent in to the twilio client.
+
+    :return: the echoed response
+    """
+    # enables this variable to be a response
     resp = twilio.twiml.Response()
+
+    # sets the message equal to the body of the message the user sent
     message = request.form["Body"]
+
+    # makes response the body of the message that the user sent in
     resp.message(message)
 
+    # sends the response back to user
     return str(resp)
 
 
