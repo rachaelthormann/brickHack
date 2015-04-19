@@ -1,6 +1,6 @@
 # import necessary modules
 from flask import Flask, request, redirect
-from stuff import *
+from codeHelper_util import *
 import twilio.twiml
 
 """
@@ -49,7 +49,8 @@ def send_sms():
         bool(resp)
     elif message == "For" or message == "While":
         loopsResponse(resp,message)
-
+    elif message == "Got help":
+        finalResponse(resp)
     # sends the response back to user
     return str(resp)
 

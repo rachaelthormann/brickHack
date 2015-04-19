@@ -10,19 +10,26 @@ __author__ = 'Philip Bedward'
 __author__ = 'Rachael Thormann'
 __author__ = 'Qadir Haqq'
 
+byemsg = "Enter 'Got help' to exit"
 def initialResp(resp):
-    categories = ["loops", "conditions", "arithmetic"]
-    # makes response the body of the message that the user sent in
+    categories = ["loops", "conditions", "arithmetic", "boolean logic"]
     response = "What category do you need help with?\n"
     for ch in categories:
-        response += str.lower(ch+"\n")
-        response = response.strip()
+        response += str.lower(ch)
+        response = response.strip() +"\n"
+    response += "\n\n"+byemsg
     resp.message(response)
+
+def finalResponse(resp):
+    final = "We hope you were helped with everything you needed." \
+            "\n Bye bye."
+    resp.message(final)
 
 def loopPrompt(resp):
     response = "A for loop or a while loop?\n" \
                    "(Enter: 'for' -> for loop \nor\n" \
-                   "'while' -> while loop)."
+                   "'while' -> while loop)." \
+                   "\n\n "+byemsg
     resp.message(response)
 
 def loopsResponse(resp,message):
@@ -39,31 +46,41 @@ def loops(keyword):
         return string
 
 def forLoops():
-    rang = "'to print the numbers 0 to 9:\n" \
-             "'for i in range(0,10):'\n" \
-             "  'print(i)'"
-    each = "to print every element in a list:\n" \
+    rang = "To print the numbers 0 to 9:\n" \
+           "range() -> built in function that takes a start and an end value; " \
+           "the end value is exclusive\n" \
+           "'for i in range(0,10):'->numbers between 0 through 9 inclusive\n" \
+           "  'print(i)'-> prints the number"
+    each = "To print every element in a list:\n" \
            "'lst = [1,2,3]'\n" \
            "'for item in lst:'\n" \
            "    'print(item)'"
-    forloops = rang + "\n\n"+each
+    hint = "For loops, unlike while loops, iterate through things for you" \
+           " so you do not have to increment i to go the next number, or do anything to" \
+           " the lst to go to the next item."
+    forloops = "Here are some examples - \n\n"+rang + "\n\n"+each +"\n"+hint+"\n\n"+byemsg
     return forloops
 
 def whileLoops():
 
-    rang = "to print all elements 0 to 9:\n" \
+    rang = "To print all elements 0 to 9:\n" \
            "'while i < 10:' -> stops when i is equal to 10\n" \
            "    'print(i)' -> prints the current \n" \
-           "    'i = i + 1' -> makes i's new value equal to its current value plus one."
+           "    'i += 1' -> sets i equal to its current value plus one.\n"
 
-    access = "to print all elementa in a list:\n" \
-             "'lst = [1,2,3]' -> create a list of the #s 1,2 & 3\n" \
-             "'index = 0' -> all lists start at index 0\n" \
+    access = "To print all elements in a list:\n" \
+             "'lst = [1,2,3]' -> Create a list of the #s 1,2 & 3\n" \
+             "'index = 0' -> All lists start at index 0\n" \
              "len() ->len is used to get the length of the list and/or string"\
-             "'while index < len(lst):' ->  ->the last index is always equal to the length of the list minus one\n" \
-             "'print(lst[index])'-> prints what is at that index "
+             "'while index < len(lst):' ->  ->The last index is always equal to the length of the list minus one\n" \
+             "'print(lst[index])'-> Prints what is at that index "
 
-    whileloops = rang + "\n\n" + access
+    hint = "While loops, unlike for loops, do not iterate through things for you" \
+           " so you do have to increment i to go the next number, or to" \
+           " go to the next item in a list."
+
+    whileloops = "Here are some examples - \n\n"+rang + "\n" + access +"\n"+hint+"\n\n"+byemsg
+
     return whileloops
 
 def conditionsPrompt(resp):
