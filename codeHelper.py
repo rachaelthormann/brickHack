@@ -35,8 +35,11 @@ def send_sms():
 
     # sets the message equal to the body of the message the user sent
     message = request.form["Body"]
+    # *For All:
+    # checks the message the user sent and sets the response message based on
+    # the user's reply
     if message == "Code help":
-        categories = ["loops", "conditions", "arithmetic", "boolean logic"]
+        #categories = ["loops", "conditions", "arithmetic", "boolean logic"]
         initialResp(resp)
     elif message == "Loops":
         loopPrompt(resp)
@@ -44,11 +47,13 @@ def send_sms():
     elif message == " Conditions":
         conditionsPrompt(resp)
     elif message == "Arithmetic":
-        arithmtetic(resp)
+        arithmetic(resp)
     elif message == "Boolean Logic":
-        bool(resp)
+        booleanLogic()
     elif message == "For" or message == "While":
         loopsResponse(resp,message)
+    elif message in bools:
+        booleanLogic()
     elif message == "Got help":
         finalResponse(resp)
     # sends the response back to user
