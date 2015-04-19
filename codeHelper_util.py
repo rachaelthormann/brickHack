@@ -243,7 +243,7 @@ def notEquals():
 
 def andOp():
     ans = "'and' Checks two conditions and it only evaluates to true if" \
-          "both conditions are true.\n" \
+          " both conditions are true.\n" \
           "Example:\n" \
           "'if 5==5 and 5 > 4:'\n" \
           "     'print('good job')'\n" \
@@ -256,7 +256,7 @@ def andOp():
 
 def orOp():
     ans = "'or' Checks two conditions and it evaluates to true if" \
-          "only one condition is true.\n" \
+          " only one condition is true.\n" \
           "Example:\n" \
           "'if 5==5 and 5 > 4:'\n" \
           "     'print('good job')'\n" \
@@ -282,3 +282,4 @@ def negate():
           "-> This would print hello because 5 != 5 is false, but this condition says\n" \
           " not 5==5 which evaluates to true\n"
     ans += "\n\n"+byemsg
+    return ans
