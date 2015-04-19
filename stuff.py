@@ -4,11 +4,12 @@ __author__ = 'Rachael Thormann'
 __author__ = 'Qadir Haqq'
 
 def initialResp(resp):
-    categories = ["loops", "conditions", "Booleans"]
+    categories = ["loops", "conditions", "arithmetic"]
     # makes response the body of the message that the user sent in
     response = "What category do you need help with?\n"
     for ch in categories:
-        response += ch+"\n"
+        response += str.lower(ch+"\n")
+        response = response.strip()
     resp.message(response)
 
 def loopPrompt(resp):
@@ -53,3 +54,30 @@ def conditions(keyWord):
         elif keyWord == conditions[2]:
             string = ""
         return string
+
+def arithmetic(keyWord):
+    operators = ["+", "-", "/", "//", "%", "*", "**"]
+    if keyWord in conditions:
+        if keyWord == conditions[0]:
+            string = "+ is a binary operator that adds two elements in infix notation, EX: 5 + 4)"
+        elif keyWord == conditions[1]:
+            string = "- is a binary operator that subtracts two elements in infix notation, EX: 5 - 4. " \
+                     "Can also be used with strings to take out the first occurrence of a letter, if the string" \
+                     "contains that letter."
+        elif keyWord == conditions[2]:
+            string = "/ is a binary operator that divides two elements in infix notation, EX: 4/2. " \
+                "If either element on the side is double, it converts the integer type to an double."
+        elif keyWord == conditions[3]:
+            string = "// is a binary operator that divides two elements in infix notation, EX: 5//2 = 2." \
+                     "Returns an integer division, "
+        elif keyWord == conditions[4]:
+            string = ""
+        elif keyWord == conditions[5]:
+            string = ""
+        elif keyWord == conditions[6]:
+            string = ""
+        return string
+
+def arithmeticResponse(resp, message):
+    response = arithmetic(message)
+    resp.message(response)

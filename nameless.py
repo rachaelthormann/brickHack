@@ -14,6 +14,7 @@ authors: Philip Bedward and Rachael Thormann
 
 __author__ = 'Philip Bedward'
 __author__ = 'Rachael Thormann'
+__author__ = 'Qadir Haqq'
 
 # sets a variable for the constructor and module for this file
 app = Flask(__name__)
@@ -36,16 +37,17 @@ def send_sms():
     # sets the message equal to the body of the message the user sent
     message = request.form["Body"]
     if message == "Code help":
-        categories = ["loops", "conditions"]
+        categories = ["loops", "conditions", "arithmetic", "boolean logic"]
         # makes response the body of the message that the user sent in
         initialResp(resp)
-
     elif message == "Loops":
         loopPrompt(resp)
-
     elif message == "Conditions":
-
-
+        conditionPrompy(resp)
+    elif message == "Arithmetic":
+        arithmtetic(resp)
+    elif message == "Boolean Logic":
+        bool(resp)
     else:
         loopsResponse(resp,message)
 
