@@ -8,8 +8,8 @@ User sends a sms message via phone, and the same message
 is sent back via twilio client.
 
 date: 4/18/2015
-filename:
-authors: Philip Bedward and Rachael Thormann
+filename: codeHelper.py
+authors: Philip Bedward, Rachael Thormann and Qadir Haqq
 """
 
 __author__ = 'Philip Bedward'
@@ -25,10 +25,9 @@ app = Flask(__name__)
 
 def send_sms():
     """
-    Sends the same sms message back to a user that is
-    sent in to the twilio client.
+    Sends a preset response back to the user when a reply is received.
 
-    :return: the echoed response
+    :return: the predetermined response
     """
 
     # enables this variable to be a response
@@ -38,17 +37,17 @@ def send_sms():
     message = request.form["Body"]
     if message == "Code help":
         categories = ["loops", "conditions", "arithmetic", "boolean logic"]
-        # makes response the body of the message that the user sent in
         initialResp(resp)
     elif message == "Loops":
         loopPrompt(resp)
-    elif message == "Conditions":
-        conditionPrompy(resp)
+
+    elif message == " Conditions":
+        conditionsPrompt(resp)
     elif message == "Arithmetic":
         arithmtetic(resp)
     elif message == "Boolean Logic":
         bool(resp)
-    else:
+    elif message == "For" or message == "While":
         loopsResponse(resp,message)
 
     # sends the response back to user

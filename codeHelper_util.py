@@ -1,4 +1,11 @@
 import twilio.twiml
+"""
+Holds all the utility methods that are to be used in codeHelper
+
+date: 4/18/2015
+filename: codeHelper_util.py
+authors: Philip Bedward, Rachael Thormann and Qadir Haqq
+"""
 __author__ = 'Philip Bedward'
 __author__ = 'Rachael Thormann'
 __author__ = 'Qadir Haqq'
@@ -26,12 +33,38 @@ def loops(keyword):
     loops = ['For', 'While']
     if keyword in loops:
         if keyword == loops[0]:
-            string = "What type of for loop?\n" \
-                "For each loop or for loop through a range of number?"
+            string = forLoops()
         elif keyword == loops[1]:
-            string = "What type of while loop?\n" \
-                "While loop through a list or while loop through a range of number?"
+            string = whileLoops()
         return string
+
+def forLoops():
+    rang = "'to print the numbers 0 to 9:\n" \
+             "'for i in range(0,10):'\n" \
+             "  'print(i)'"
+    each = "to print every element in a list:\n" \
+           "'lst = [1,2,3]'\n" \
+           "'for item in lst:'\n" \
+           "    'print(item)'"
+    forloops = rang + "\n\n"+each
+    return forloops
+
+def whileLoops():
+
+    rang = "to print all elements 0 to 9:\n" \
+           "'while i < 10:' -> stops when i is equal to 10\n" \
+           "    'print(i)' -> prints the current \n" \
+           "    'i = i + 1' -> makes i's new value equal to its current value plus one."
+
+    access = "to print all elementa in a list:\n" \
+             "'lst = [1,2,3]' -> create a list of the #s 1,2 & 3\n" \
+             "'index = 0' -> all lists start at index 0\n" \
+             "len() ->len is used to get the length of the list and/or string"\
+             "'while index < len(lst):' ->  ->the last index is always equal to the length of the list minus one\n" \
+             "'print(lst[index])'-> prints what is at that index "
+
+    whileloops = rang + "\n\n" + access
+    return whileloops
 
 def conditionsPrompt(resp):
     response = "A if, elif, or else condition?\n" \
