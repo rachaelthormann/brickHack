@@ -1,5 +1,6 @@
 # import necessary modules
 from flask import Flask, request, redirect
+from stuff import *
 import twilio.twiml
 
 """
@@ -28,14 +29,22 @@ def send_sms():
 
     :return: the echoed response
     """
+
     # enables this variable to be a response
     resp = twilio.twiml.Response()
 
     # sets the message equal to the body of the message the user sent
     message = request.form["Body"]
+    if message == "Code help":
+        categories = ["loops", "conditions"]
+        # makes response the body of the message that the user sent in
+        initialResp(resp)
 
-    # makes response the body of the message that the user sent in
-    resp.message(message)
+
+    elif message == "Loops":
+        loopPrompt(resp)
+    else:
+        loopsResponse(resp,message)
 
     # sends the response back to user
     return str(resp)
