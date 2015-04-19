@@ -43,17 +43,19 @@ def send_sms():
         initialResp(resp)
     elif message == "Loops":
         loopPrompt(resp)
-
-    elif message == " Conditions":
-        conditionsPrompt(resp)
-    elif message == "Arithmetic":
-        arithmetic(resp)
-    elif message == "Boolean Logic":
-        booleanLogic()
     elif message == "For" or message == "While":
         loopsResponse(resp,message)
+    elif message == "Conditions":
+        conditionsPrompt(resp)
+    elif message in conditions_list:
+        conditionsResponse(resp,message)
+    elif message == "Arithmetic":
+        arithmetic(resp)
+    elif message == "Boolean logic":
+        booleanPrompt(resp)
+
     elif message in bools:
-        booleanLogic()
+        booleanResponse(message,resp)
     elif message == "Got help":
         finalResponse(resp)
     # sends the response back to user

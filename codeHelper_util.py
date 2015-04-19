@@ -9,7 +9,8 @@ authors: Philip Bedward, Rachael Thormann and Qadir Haqq
 __author__ = 'Philip Bedward'
 __author__ = 'Rachael Thormann'
 __author__ = 'Qadir Haqq'
-bools = ["==","!=","or","and","not"]
+bools = ["==","!=","Or","And","Not"]
+conditions_list = ["If", "Elif","Else"]
 byemsg = "Enter 'Got help' to exit"
 def initialResp(resp):
     """
@@ -19,7 +20,11 @@ def initialResp(resp):
     to the user
     :return:
     """
+
+
+
     categories = ["loops", "conditions", "arithmetic", "boolean logic"]
+
     response = "What category do you need help with?\n"
     # add every category to the response variable
     # separate each word using new-line characters
@@ -144,23 +149,23 @@ def conditionsResponse(resp, message):
     resp.message(response)
 
 def conditions(keyWord):
-    conditions = ['if', 'elif', 'else']
-    if keyWord in conditions:
-        if keyWord == conditions[0]:
+
+    if keyWord in conditions_list:
+        if keyWord == conditions_list[0]:
             string = "'if' -> only gets through the statement if the condition evaluates to true.\n" \
                      "Example: \n" \
                      "'if n ==1:'\n" \
                      "      'print('one')'\n" \
                      "-> 'one' would be printed when n is equal to one\n\n"+byemsg
-        elif keyWord == conditions[1]:
+        elif keyWord == conditions_list[1]:
             string = "'elif' -> meaning otherwise if or else if.\nOnly gets through" \
-                     " the check if the condition evaluates to true" \
+                     " the check if the condition evaluates to true\n" \
                      "Example:\n" \
                      "'elif n ==2:'\n" \
                      "      'print('two')'\n" \
                      "-> 'two' would be printed when n is equal to two\n\n" +byemsg
-        elif keyWord == conditions[2]:
-            string = "'else' -> meaning if all preceding conditions are false then do this" \
+        elif keyWord == conditions_list[2]:
+            string = "'else' -> meaning if all preceding conditions are false then do this\n" \
                      "Example:\n" \
                      "'else:'\n" \
                      "  'print('another number')'\n" \
@@ -194,18 +199,18 @@ def arithmeticResponse(resp, message):
     response = arithmetic(message)
     resp.message(response)
 
-def booleanLogic():
+def booleanPrompt(reply):
 
     prompt = "Which boolen operator would you like to know about?\n"
     for b in bools:
         prompt += b + "\n"
     prompt += "\n\n"+byemsg
 
-    return prompt
+    reply.message(prompt)
 
 def booleanResponse(keyWord,reply):
     response = booleans(keyWord)
-    reply.messafe(response)
+    reply.message(response)
 
 def booleans(keyWord):
     if keyWord == bools[0]:
@@ -213,9 +218,9 @@ def booleans(keyWord):
     elif keyWord == bools[1]:
         string = notEquals()
     elif keyWord == bools[2]:
-        string = andOp()
-    elif keyWord == bools[3]:
         string = orOp()
+    elif keyWord == bools[3]:
+        string = andOp()
     elif keyWord == bools[4]:
         string = negate()
     return string
