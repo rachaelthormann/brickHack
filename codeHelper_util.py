@@ -9,9 +9,12 @@ authors: Philip Bedward, Rachael Thormann and Qadir Haqq
 __author__ = 'Philip Bedward'
 __author__ = 'Rachael Thormann'
 __author__ = 'Qadir Haqq'
-bools = ["==","!=","Or","And","Not"]
+
+bools = ['Or', 'And', 'Not', '<' , '<=' , '>' , '>=' , '==' , '!=','Is', 'Is not']
 conditions_list = ["If", "Elif","Else"]
+operators = ["+", "-", "/", "//", "%", "*", "**"]
 byemsg = "Enter 'Got help' to exit"
+
 def initialResp(resp):
     """
     The initial response to the user's first message
@@ -173,16 +176,16 @@ def conditions(keyWord):
         return string
 
 def arithmetic(keyWord):
-    operators = ["+", "-", "/", "//", "%", "*", "**"]
+
     if keyWord in operators:
         if keyWord == operators[0]:
-            string = "+ is a binary operator that adds two elements in infix notation, EX: 5 + 4)"
+            string = "+ is a binary operator that adds two elements in infix notation, EX: 5 + 4."
         elif keyWord == operators[1]:
-            string = "- is a binary operator that subtracts two elements in infix notation, EX: 5 - 4. " \
+            string = "- is a binary operator that subtracts two elements in infix notation, EX: 5 - 4." \
                      "Can also be used with strings to take out the first occurrence of a letter, if the string" \
                      "contains that letter."
         elif keyWord == operators[2]:
-            string = "/ is a binary operator that divides two elements in infix notation, EX: 4/2. " \
+            string = "/ is a binary operator that divides two elements in infix notation, EX: 4/2." \
                 "If either element on the side is double, it converts the integer type to an double."
         elif keyWord == operators[3]:
             string = "// is a binary operator that divides two elements in infix notation, EX: 5//2 = 2." \
@@ -230,7 +233,7 @@ def boolResponse(resp,message):
     resp.message(response)
 
 def bool(keyword):
-    bools = ['or', 'and', 'not', '<' , '<=' , '>' , '>=' , '==' , '!=' , 'is', 'is not']
+
     if keyword in bools:
         if keyword == bools[0]:
             string = "EX: (x  or y): if x is false, then y, else x"
@@ -255,4 +258,4 @@ def bool(keyword):
             string = "object identity"
         elif keyword == bools[10]:
             string = "negated object identity"
-    return string
+        return string

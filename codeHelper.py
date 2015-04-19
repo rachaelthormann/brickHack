@@ -50,11 +50,13 @@ def send_sms():
     elif message in conditions_list:
         conditionsResponse(resp,message)
     elif message == "Arithmetic":
-        arithmetic(resp)
+        arithmeticPrompt(resp)
+    elif message in operators:
+        arithmeticResponse(resp,message)
     elif message == "Boolean logic":
-        bool(resp)
+        boolPrompt(resp)
     elif message in bools:
-        boolResponse(message,resp)
+        boolResponse(resp,message)
     elif message == "Got help":
         finalResponse(resp)
     # sends the response back to user
