@@ -40,14 +40,19 @@ def send_sms():
         # makes response the body of the message that the user sent in
         initialResp(resp)
 
-
     elif message == "Loops":
         loopPrompt(resp)
+
+    elif message == "Conditions":
+
+
     else:
         loopsResponse(resp,message)
 
     # sends the response back to user
     return str(resp)
+
+
 
 
 if __name__ == "__main__":
