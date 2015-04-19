@@ -174,112 +174,85 @@ def conditions(keyWord):
 
 def arithmetic(keyWord):
     operators = ["+", "-", "/", "//", "%", "*", "**"]
-    if keyWord in conditions:
-        if keyWord == conditions[0]:
+    if keyWord in operators:
+        if keyWord == operators[0]:
             string = "+ is a binary operator that adds two elements in infix notation, EX: 5 + 4)"
-        elif keyWord == conditions[1]:
+        elif keyWord == operators[1]:
             string = "- is a binary operator that subtracts two elements in infix notation, EX: 5 - 4. " \
                      "Can also be used with strings to take out the first occurrence of a letter, if the string" \
                      "contains that letter."
-        elif keyWord == conditions[2]:
+        elif keyWord == operators[2]:
             string = "/ is a binary operator that divides two elements in infix notation, EX: 4/2. " \
                 "If either element on the side is double, it converts the integer type to an double."
-        elif keyWord == conditions[3]:
+        elif keyWord == operators[3]:
             string = "// is a binary operator that divides two elements in infix notation, EX: 5//2 = 2." \
                      "Returns an integer division, "
-        elif keyWord == conditions[4]:
-            string = ""
-        elif keyWord == conditions[5]:
-            string = ""
-        elif keyWord == conditions[6]:
-            string = ""
+        elif keyWord == operators[4]:
+            string = "% is the binary operation for a remainder of two elements in infix notation, EX: 5%2 = 1."
+        elif keyWord == operators[5]:
+            string = "* is the binary operator for the multiplication of two elements in infix notation, EX: 2*2."
+        elif keyWord == operators[6]:
+            string = "** is the binary operator for an exponent, in infix notation, EX: 2**3 = 8."
         return string
 
 def arithmeticResponse(resp, message):
     response = arithmetic(message)
     resp.message(response)
 
-def booleanPrompt(reply):
+def arithmeticPrompt(resp):
+    response = "A +, -, /, //, %,*, or ** operator?\n" \
+                "(Enter: '+' -> addition operator \n,\n" \
+                "'-' -> subtraction operator \n,\n " \
+                "'/' -> division operator \n,\n " \
+                "'//' -> floor operator \n,\n " \
+                "'%' -> addition operator \n,\n " \
+                "'*' ->  multiplication operator \nor\n" \
+                "'**' ->  exponential  operator)."
+    resp.message(response)
 
-    prompt = "Which boolen operator would you like to know about?\n"
-    for b in bools:
-        prompt += b + "\n"
-    prompt += "\n\n"+byemsg
+def boolPrompt(resp):
+    response = "An 'or', 'and', 'not', '<' , '<=' , '>' , '>=' , '==' , '!=' , 'is', or 'is not'?\n" \
+                "(Enter: 'or' -> or statement \nor\n" \
+                "'and' -> and statement \n,\n " \
+                "'not' -> not statement \n,\n " \
+                "'<' -> less than comparison \n,\n " \
+                "'<=' -> less than or equal to comparison \n,\n " \
+                "'>' ->  greater than comparison \n,\n " \
+                "'>=' ->  greater than or equal to comparison\n,\n " \
+                "'==' -> equal comparison \n,\n " \
+                "'!=' -> not equal to comparison \n,\n " \
+                "'is' -> is statement \nor\n" \
+                "'is not'-> is not statement)."
+    resp.message(response)
 
-    reply.message(prompt)
+def boolResponse(resp,message):
+    response = bool(message)
+    resp.message(response)
 
-def booleanResponse(keyWord,reply):
-    response = booleans(keyWord)
-    reply.message(response)
-
-def booleans(keyWord):
-    if keyWord == bools[0]:
-        string = doubleEquals()
-    elif keyWord == bools[1]:
-        string = notEquals()
-    elif keyWord == bools[2]:
-        string = orOp()
-    elif keyWord == bools[3]:
-        string = andOp()
-    elif keyWord == bools[4]:
-        string = negate()
+def bool(keyword):
+    bools = ['or', 'and', 'not', '<' , '<=' , '>' , '>=' , '==' , '!=' , 'is', 'is not']
+    if keyword in bools:
+        if keyword == bools[0]:
+            string = "EX: (x  or y): if x is false, then y, else x"
+        elif keyword == bools[1]:
+            string = "EX: (x and y): if x is false, then x, else y"
+        elif keyword == bools[2]:
+            string = "EX: (not x): if x is false, then True, else False"
+        elif keyword == bools[3]:
+            string = "strictly less than"
+        elif keyword == bools[4]:
+            string = "less than or equal"
+        elif keyword == bools[5]:
+            string = "strictly greater than"
+        elif keyword == bools[6]:
+            string = "greater than or equal"
+        elif keyword == bools[7]:
+            string = "equal"
+        elif keyword == bools[8]:
+            string = "not equal (CAN ALSO BE WRITTEN '<>'but this is an obsolete usage kept for backwards compatibility " \
+                     "only. New code should always use !=.)"
+        elif keyword == bools[9]:
+            string = "object identity"
+        elif keyword == bools[10]:
+            string = "negated object identity"
     return string
-
-def doubleEquals():
-    ans = "'==' checks if two things are equal\n" \
-          "Example: \n" \
-          "'5 == 5 -> True because 5 is equal to 5\n" \
-          "'5 == 4' -> False becuase 5 is not equal to 4\n"
-    ans += "\n\n"+byemsg
-    return ans
-
-def notEquals():
-    ans = "'!=' checks if two things are not equal\n" \
-          "Example: \n" \
-          "'5 != 5 -> False because 5 is equal to 5\n" \
-          "'5 != 4' -> True becuase 5 is not equal to 4\n"
-    ans += "\n\n"+byemsg
-    return ans
-
-def andOp():
-    ans = "'and' Checks two conditions and it only evaluates to true if" \
-          " both conditions are true.\n" \
-          "Example:\n" \
-          "'if 5==5 and 5 > 4:'\n" \
-          "     'print('good job')'\n" \
-          "-> 'good job' would be printed because both of those conditions are true\n\n"\
-          "'if 5 == 5 and 5 < 4:'\n" \
-          "     'print('good job')'\n" \
-          "-> 'good job' would not be printed because the second condition is false\n"
-    ans += "\n\n"+byemsg
-    return ans
-
-def orOp():
-    ans = "'or' Checks two conditions and it evaluates to true if" \
-          " only one condition is true.\n" \
-          "Example:\n" \
-          "'if 5==5 and 5 > 4:'\n" \
-          "     'print('good job')'\n" \
-          "-> 'good job' would be printed because both of those conditions are true\n\n"\
-          "'if 5==5 and 5 < 4:'\n" \
-          "     'print('good job')'\n" \
-          "-> 'good job' would be printed because the first conditions is true\n\n"\
-          "'if 5 != 5 and 5 < 4:'\n" \
-          "     'print('good job')'\n" \
-          "-> 'good job' would not be printed because the both conditions are false\n"
-    ans += "\n\n"+byemsg
-    return ans
-
-def negate():
-    ans = "not' negates the boolean value the proceeds it.\n" \
-          "Example:\n" \
-          "'if not 5 == 5:'\n" \
-          "     'print('hello')'\n" \
-          "-> This would not print hello because 5 ==5 is true, but this condition says\n" \
-          " not 5==5 which evaluates to false\n" \
-          "'if not 5 != 5:'" \
-          "     'print('hello')'" \
-          "-> This would print hello because 5 != 5 is false, but this condition says\n" \
-          " not 5==5 which evaluates to true\n"
-    ans += "\n\n"+byemsg
-    return ans
